@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class CubeGenerator : MonoBehaviour
 {
+    public NavMeshSurface surface;
+
     void GenerateCubes()
     {
         int x = 0;
@@ -30,6 +32,7 @@ public class CubeGenerator : MonoBehaviour
     private void Start()
     {
         GenerateCubes();
+        surface.BuildNavMesh();
     }
 
 
