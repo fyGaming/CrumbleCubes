@@ -5,15 +5,30 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-
+    private StateMachine stateMachine = new StateMachine();
     public Camera cam;
     public NavMeshAgent agent;
     public float fallingSpeed = 0f;
     CubeGenerator cubeGenerator;
     bool falling = false;
 
+
+    void Start()
+    {
+        this.stateMachine.ChangeState(new PlayerIdle());
+
+    }
+
     void Update()
     {
+        this.stateMachine.ExecuteStateUpdate();
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            this.stateMachine.ChangeState(new PlayerSetDes(cam, agent));
+        }
+
+        /*  working without state machine
         if (Input.GetMouseButtonDown(1))
         {
             Ray ray =  cam.ScreenPointToRay(Input.mousePosition);
@@ -26,8 +41,8 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        */
 
-        
     }
 
     void FixedUpdate()
