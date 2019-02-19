@@ -31,7 +31,6 @@ public class PlayerSetDes : IState
         {
             //Move Agent
             agent.SetDestination(hit.point);
-
         }
     }
 

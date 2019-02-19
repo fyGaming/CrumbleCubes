@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             this.stateMachine.ChangeState(new PlayerSetDes(cam, agent));
+            //this.stateMachine.SwitchToPreviousState();
         }
 
         /*  working without state machine
